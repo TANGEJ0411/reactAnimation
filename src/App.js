@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import TicketShow from "./pages/components/TicketShow";
+import { BrowserRouter } from "react-router-dom";
+import BasicExample from "./pages/components/BasicExample";
+import Modal from "./pages/components/Modal.js";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route  element={<TicketShow />} />
+    //   </Routes>
+    // </BrowserRouter>
+    <>
+      <TicketShow />
+      <BasicExample />
+      <Modal />
+    </>
+  )
 }
 
 export default App;

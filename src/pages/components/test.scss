@@ -1,0 +1,29 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.accordion {
+  margin-bottom: 1rem;
+}
+
+.accordion__button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #eee;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.accordion__content {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.3s ease-out;
+}
+
+.accordion__content--open {
+  max-height: 1000px;
+}
+.test {
+  height: 100px;
+}
