@@ -44,6 +44,7 @@ function Modal() {
                                         position = 300
                                     } else {
                                         position = e.clientX - dragStartX.current
+                                        dragBoxRef.current.style.background = 'linearGradient(to left, #333, #333 50%, #eee 75%, #333 75%)';
                                     }
                                 }
                                 setObjPosition(position)
