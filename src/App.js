@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import BasicExample from "./pages/components/BasicExample";
 import Modal from "./pages/components/Modal.js";
 import ClipboardCopy from "./pages/components/ClipboardCopy";
+import Ticket from "./pages/components/Ticket";
 
 
 function App() {
@@ -13,13 +14,14 @@ function App() {
     //     <Route  element={<TicketShow />} />
     //   </Routes>
     // </BrowserRouter>
-    <>
+    <div className="wrap">
       <TicketShow />
       <BasicExample />
+      <Ticket />
       <Modal />
       <ClipboardCopy copyText={'text'} />
       {/* <TicketShow /> */}
-    </>
+    </div>
   )
 }
 

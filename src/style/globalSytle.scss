@@ -1,8 +1,18 @@
 //以下自訂預設變數
-
 //導入BS5
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 //覆蓋原本BS5變數
 
 //全域模組
+
+body {
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+.wrap {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 5px;
+}
