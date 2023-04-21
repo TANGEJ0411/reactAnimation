@@ -15,4 +15,9 @@ body {
   max-width: 1400px;
   margin: auto;
   padding: 5px;
+  .home-nav {
+    max-width: 1200px;
+    margin: auto;
+    overflow-wrap: anywhere;
+  }
 }
