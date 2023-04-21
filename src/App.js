@@ -32,32 +32,50 @@ function App() {
     liffInit()
   }, [])
   return (
-    <isLoginContext.Provider value={isLoggin}>
-      <div className="wrap">
-        <BrowserRouter>
-          <nav className="home-nav d-flex justify-content-center">
-            {navItem.map((item, index) => {
-              if (item === '/') {
-                item = "首頁"
-              }
-              return (
-                <Link to={item} key={item} className="ms-2">{item}</Link>
-              )
-            })}
-            <button><Link to={"/login"}>登入按鈕</Link></button>
-          </nav>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<TicketShow />} />
-            <Route path="/basicExample" element={<BasicExample />} />
-            <Route path="/ticket" element={<Ticket />} />
-            <Route path="/modal" element={<Modal />} />
-            <Route path="/clipboardCopy" element={<ClipboardCopy copyText={'text'} />} />
-            <Route path="/addFriend" element={<AddFriend />} />
-          </Routes>
-        </BrowserRouter>
-      </div >
-    </isLoginContext.Provider>
+    <>
+      <BrowserRouter>
+        <isLoginContext.Provider value={isLoggin}>
+          <div className="wrap">
+            <nav className="home-nav d-flex justify-content-center">
+              {navItem.map((item, index) => {
+                let title
+                switch (item) {
+                  case "/":
+                    title = '首頁'
+                    break;
+                  case 'basicExample':
+                    title = 'basicExample'
+                    break;
+                  case 'ticket':
+                    title = 'ticket'
+                    break;
+                  case 'modal':
+                    title = 'modal'
+                    break
+                  case 'clipboardCopy':
+                    title = 'clipboardCopy'
+                    break
+                  default:
+                }
+                return (
+                  <Link to={item} key={item} className="ms-2">{title}</Link>
+                )
+              })}
+              <button><Link to={"/login"}>登入按鈕</Link></button>
+            </nav>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<TicketShow />} />
+              <Route path="/basicExample" element={<BasicExample />} />
+              <Route path="/ticket" element={<Ticket />} />
+              <Route path="/modal" element={<Modal />} />
+              <Route path="/clipboardCopy" element={<ClipboardCopy copyText={'text'} />} />
+              <Route path="/addFriend" element={<AddFriend />} />
+            </Routes>
+          </div >
+        </isLoginContext.Provider>
+      </BrowserRouter>
+    </>
   )
 }
 

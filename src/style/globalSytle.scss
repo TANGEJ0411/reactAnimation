@@ -7,17 +7,17 @@
 //全域模組
 
 body {
-  background: #f5f5f5;
   box-sizing: border-box;
-}
-.wrap {
-  width: 100%;
-  max-width: 1400px;
-  margin: auto;
-  padding: 5px;
-  .home-nav {
-    max-width: 1200px;
+  .wrap {
+    background: #f5f5f5;
+    width: 100%;
+    max-width: 1020px;
     margin: auto;
-    overflow-wrap: anywhere;
+    padding: 5px;
+    .home-nav {
+      max-width: 1200px;
+      margin: auto;
+      overflow-wrap: anywhere;
+    }
   }
 }

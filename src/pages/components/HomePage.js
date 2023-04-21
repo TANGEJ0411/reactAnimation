@@ -21,8 +21,9 @@ function HomePage() {
             }
         }
         if (isLoggin) {
-            tryAddFriend()
             console.log("我還沒被執行")
+            tryAddFriend()
+            console.log("我還沒被執行2")
         }
     }, [isLoggin])
     return (
