@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { isLoginContext } from '../../App';
 import liff from '@line/liff';
+import { useNavigate } from 'react-router-dom';
 
 function TicketShow() {
     const [logReq, setLogReq] = useState(false)
+    const navigate = useNavigate()
     const isLoggin = useContext(isLoginContext)
     useEffect(() => {
         async function liffLogin() {

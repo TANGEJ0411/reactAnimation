@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { isLoginContext } from "../../App";
 import liff from "@line/liff";
+import { useNavigate } from "react-router-dom";
 
 function ClipboardCopy({ copyText }) {
     const [isCopied, setIsCopied] = useState(false);
+    const navigate = useNavigate();
     const isLoggedIn = useContext(isLoginContext)
     // This is the function we wrote earlier
     async function copyTextToClipboard(text) {
@@ -45,8 +47,6 @@ function ClipboardCopy({ copyText }) {
                     console.log(permissionQueryC);
                     const permissionQueryO = await liff.permission.query("openid");
                     console.log(permissionQueryO);
-                    const getFriendShip = await liff.getFriendship()
-                    console.log(getFriendShip)
                 }
             } catch (error) {
                 throw error
