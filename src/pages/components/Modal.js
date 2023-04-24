@@ -47,12 +47,6 @@ function Modal() {
         if (startDrag) {
             if (e.touches[0].clientX < dragStartX.current) {
                 position = 0
-<<<<<<< HEAD
-            } else if (e.touches[0].clientX > dragStartX.current + 300) {
-                position = 300
-            } else {
-                position = e.touches[0].clientX - dragStartX.current
-=======
             } else if (e.touches[0].clientX > dragStartX.current + dragWidth) {
                 position = dragWidth
             } else {
@@ -61,7 +55,6 @@ function Modal() {
                 if (position > 0) {
                     dragBoxRef.current.style.background = `linear-gradient(to right, yellow ${position}px, green 50%, red 100%)`;
                 }
->>>>>>> ad1ca54f9a03aa72ebc4ecaa5bc9eb22c2f00406
             }
         }
         setObjPosition(position)
@@ -70,30 +63,17 @@ function Modal() {
 
     const handleTouchEnd = (e) => {
         setStartDrag(false)
-<<<<<<< HEAD
-        if (objPosition >= 200) {
-            modalRef.current.style.left = `300px`
-            dragBoxRef.current.style.opacity = '0'
-            dragBoxRef.current.style.height = '0'
-            // dragBoxRef.current.style.display = 'none'
-            setCheck(true)
-            setObjPosition(300)
-=======
         if (objPosition >= dragWidth - 50) {
             modalRef.current.style.left = `${dragWidth}px`
             dragBoxRef.current.style.opacity = '0'
             dragBoxRef.current.style.height = '0'
             setCheck(true)
             setObjPosition(dragWidth)
->>>>>>> ad1ca54f9a03aa72ebc4ecaa5bc9eb22c2f00406
         } else {
             modalRef.current.style.left = `0px`
             setObjPosition(0)
         }
     }
-<<<<<<< HEAD
-
-=======
     const handleMouseMove = (e) => {
         e.stopPropagation();
         let position;
@@ -145,7 +125,6 @@ function Modal() {
         }
     }
     //要彈出覆蓋的Modal或是offcanvas要放在最下面
->>>>>>> ad1ca54f9a03aa72ebc4ecaa5bc9eb22c2f00406
     return (
         <>
             <Ticket />
@@ -161,20 +140,14 @@ function Modal() {
 
                         <div className='drag-box'
                             ref={dragBoxRef}
-<<<<<<< HEAD
-=======
                             onMouseMove={handleMouseMove}
->>>>>>> ad1ca54f9a03aa72ebc4ecaa5bc9eb22c2f00406
                             onTouchMove={handleTouchMove}
                         >
                             <div className='drag-object'
                                 ref={modalRef}
-<<<<<<< HEAD
-=======
                                 onMouseDown={handleMouseDown}
                                 onMouseUp={handleMouseUp}
                                 onMouseOut={handleMouseOut}
->>>>>>> ad1ca54f9a03aa72ebc4ecaa5bc9eb22c2f00406
                                 onTouchStart={handleTouchStart}
                                 onTouchEnd={handleTouchEnd}
                             >
