@@ -36,7 +36,23 @@ function App() {
       <BrowserRouter>
         <isLoginContext.Provider value={isLoggin}>
           <div className="wrap">
-            <nav className="home-nav d-flex justify-content-center">
+            <div className="my-contain">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<TicketShow />} />
+                <Route path="/basicExample" element={<BasicExample />} />
+                <Route path="/ticket" element={<Ticket />}>
+                  <Route index element={<Ticket />} />
+                  {/* <Route path="/voucher" element={<Ticket />} />
+                <Route path="/coupon" element={<Ticket />} /> */}
+                </Route>
+                <Route path="/modal" element={<Modal />} />
+                <Route path="/clipboardCopy" element={<ClipboardCopy copyText={'text'} />} />
+                <Route path="/addFriend" element={<AddFriend />} />
+              </Routes>
+              <p className="text-center">已經到底囉^_^</p>
+            </div>
+            <nav className="home-nav d-flex justify-content-center position-sticky bottom-0">
               {navItem.map((item, index) => {
                 let title
                 switch (item) {
@@ -61,17 +77,8 @@ function App() {
                   <Link to={item} key={item} className="ms-2">{title}</Link>
                 )
               })}
-              <button><Link to={"/login"}>登入按鈕</Link></button>
+              <button><Link to={"/login"}>登入</Link></button>
             </nav>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<TicketShow />} />
-              <Route path="/basicExample" element={<BasicExample />} />
-              <Route path="/ticket" element={<Ticket />} />
-              <Route path="/modal" element={<Modal />} />
-              <Route path="/clipboardCopy" element={<ClipboardCopy copyText={'text'} />} />
-              <Route path="/addFriend" element={<AddFriend />} />
-            </Routes>
           </div >
         </isLoginContext.Provider>
       </BrowserRouter>
