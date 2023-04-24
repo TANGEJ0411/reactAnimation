@@ -1,0 +1,23 @@
+.otp-group {
+  display: flex;
+  width: 100%;
+  max-width: 360px;
+  column-gap: 10px;
+}
+
+.otp-input {
+  min-width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1;
+  outline: none;
+  margin-left: 20px;
+}
+.otp-input:focus {
+  border: 5px solid red;
+  /* background: red; */
+}

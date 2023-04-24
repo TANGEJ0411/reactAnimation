@@ -24,14 +24,15 @@
     }
   }
   .inner-box {
-    width: 500px;
-    height: 500px;
+    max-width: 500px;
+    height: 300px;
     position: relative;
     border-radius: 8px;
     padding: 16px;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
     background-color: rgb(255, 255, 255);
     animation: my-animation-one 0.5s;
+
     @keyframes my-animation-one {
       0% {
         top: -50px;
@@ -52,16 +53,17 @@
       cursor: pointer;
     }
     .drag-box {
-      height: 100px;
-      width: 400px;
+      height: 50px;
+      max-width: 300px;
       background: lightgray;
       position: relative;
-      transition: 0.5s;
+      transition: 0.3s;
       .drag-object {
-        height: 100px;
-        width: 100px;
+        height: 50px;
+        width: 50px;
         background: #000;
         position: absolute;
+        cursor: pointer;
       }
     }
   }

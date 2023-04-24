@@ -1,9 +1,12 @@
-import { useState } from "react";
-
+import { useContext, useEffect, useState } from "react";
+import { isLoginContext } from "../../App";
+import liff from "@line/liff";
+import { useNavigate } from "react-router-dom";
 
 function ClipboardCopy({ copyText }) {
     const [isCopied, setIsCopied] = useState(false);
-
+    const navigate = useNavigate();
+    const isLoggedIn = useContext(isLoginContext)
     // This is the function we wrote earlier
     async function copyTextToClipboard(text) {
         if ('clipboard' in navigator) {
@@ -29,6 +32,28 @@ function ClipboardCopy({ copyText }) {
             });
     }
 
+    useEffect(() => {
+        const getLiffContext = async () => {
+            try {
+                await liff.ready
+                if (isLoggedIn) {
+                    const context = liff.getContext();
+                    console.log(context);
+                    const permissionQueryE = await liff.permission.query("email");
+                    console.log(permissionQueryE);
+                    const permissionQueryP = await liff.permission.query("profile");
+                    console.log(permissionQueryP);
+                    const permissionQueryC = await liff.permission.query("chat_message.write");
+                    console.log(permissionQueryC);
+                    const permissionQueryO = await liff.permission.query("openid");
+                    console.log(permissionQueryO);
+                }
+            } catch (error) {
+                throw error
+            }
+        }
+        getLiffContext()
+    }, [])
     return (
         <div>
             <input type="text" value={copyText} readOnly />
