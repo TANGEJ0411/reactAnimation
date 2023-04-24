@@ -21,6 +21,42 @@ function Modal() {
     const [startDrag, setStartDrag] = useState(false)
     const [check, setCheck] = useState(false)
     const dragStartX = useRef(0)
+
+    const handleTouchStart = (e) => {
+        setStartDrag(true)
+        dragStartX.current = parseInt(e.touches[0].clientX)
+    }
+
+    const handleTouchMove = (e) => {
+        let position;
+        if (startDrag) {
+            if (e.touches[0].clientX < dragStartX.current) {
+                position = 0
+            } else if (e.touches[0].clientX > dragStartX.current + 300) {
+                position = 300
+            } else {
+                position = e.touches[0].clientX - dragStartX.current
+            }
+        }
+        setObjPosition(position)
+        modalRef.current.style.left = `${position}px`
+    }
+
+    const handleTouchEnd = (e) => {
+        setStartDrag(false)
+        if (objPosition >= 200) {
+            modalRef.current.style.left = `300px`
+            dragBoxRef.current.style.opacity = '0'
+            dragBoxRef.current.style.height = '0'
+            // dragBoxRef.current.style.display = 'none'
+            setCheck(true)
+            setObjPosition(300)
+        } else {
+            modalRef.current.style.left = `0px`
+            setObjPosition(0)
+        }
+    }
+
     return (
         <>
             <button onClick={handleOpenModal}>Open Modal</button>
@@ -35,75 +71,12 @@ function Modal() {
 
                         <div className='drag-box'
                             ref={dragBoxRef}
-                            onMouseMove={(e) => {
-                                let position;
-                                if (startDrag) {
-                                    if (e.clientX < dragStartX.current) {
-                                        position = 0
-                                    } else if (e.clientX > dragStartX.current + 300) {
-                                        position = 300
-                                    } else {
-                                        position = e.clientX - dragStartX.current
-                                        dragBoxRef.current.style.background = 'linearGradient(to left, #333, #333 50%, #eee 75%, #333 75%)';
-                                    }
-                                }
-                                setObjPosition(position)
-                                modalRef.current.style.left = `${position}px`
-                            }}
-                            onTouchMove={(e) => {
-                                let position;
-                                if (startDrag) {
-                                    if (e.clientX < dragStartX.current) {
-                                        position = 0
-                                    } else if (e.clientX > dragStartX.current + 300) {
-                                        position = 300
-                                    } else {
-                                        position = e.clientX - dragStartX.current
-                                    }
-                                }
-                                setObjPosition(position)
-                                modalRef.current.style.left = `${position}px`
-                            }}
+                            onTouchMove={handleTouchMove}
                         >
                             <div className='drag-object'
                                 ref={modalRef}
-                                onMouseDown={(e) => {
-                                    setStartDrag(true)
-                                    dragStartX.current = parseInt(e.clientX)
-                                }}
-                                onMouseUp={(e) => {
-                                    setStartDrag(false)
-                                    if (objPosition >= 200) {
-                                        modalRef.current.style.left = `300px`
-                                        dragBoxRef.current.style.opacity = '0'
-                                        dragBoxRef.current.style.height = '0'
-                                        // dragBoxRef.current.style.display = 'none'
-                                        setCheck(true)
-                                        setObjPosition(300)
-                                    } else {
-                                        modalRef.current.style.left = `0px`
-                                        setObjPosition(0)
-                                    }
-                                }}
-                                onMouseOut={(e) => {
-                                    setStartDrag(false)
-                                    if (objPosition > 250) {
-                                        modalRef.current.style.left = `300px`
-                                        dragBoxRef.current.style.opacity = '0'
-                                        dragBoxRef.current.style.height = '0'
-                                        // dragBoxRef.current.style.display = 'none'
-                                        setCheck(true)
-                                        setObjPosition(300)
-                                    } else {
-                                        modalRef.current.style.left = `0px`
-                                        setObjPosition(0)
-                                    }
-                                }}
-                                onTouchStart={(e) => {
-                                    setStartDrag(true)
-                                    dragStartX.current = parseInt(e.clientX)
-                                }
-                                }
+                                onTouchStart={handleTouchStart}
+                                onTouchEnd={handleTouchEnd}
                             >
                             </div>
                         </div>
