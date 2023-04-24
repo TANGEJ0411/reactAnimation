@@ -36,6 +36,16 @@ function App() {
       <BrowserRouter>
         <isLoginContext.Provider value={isLoggin}>
           <div className="wrap">
+            <nav className="nav-header">
+              <div className="row">
+                <h2 className="col-10 text-center">我的票夾</h2>
+                <h6 className="col-2">轉贈票券</h6>
+              </div>
+              <div className="d-flex mt-3">
+                <h5 className="mx-auto">預約券</h5>
+                <h5 className="mx-auto">即享券</h5>
+              </div>
+            </nav>
             <div className="my-contain">
               <Routes>
                 <Route path="/" element={<HomePage />} />

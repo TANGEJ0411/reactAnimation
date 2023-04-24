@@ -43,15 +43,38 @@ $my-t4-pc: 18;
 //覆蓋原本BS5變數
 
 //全域模組
-
+@mixin sm-mobile{
+    @media(min-width:360px){
+      @content;
+    }
+}
+@mixin mobile{
+    @media(min-width:508){
+      @content;
+    }
+  }
+  @mixin pad{
+    @media(min-width:784){
+      @content;
+    }
+  }
+  @mixin PC{
+    @media(min-width:1020px){
+      @content;
+    }
+  }
+  
 body {
   box-sizing: border-box;
   font-family: "Noto Sans TC", sans-serif;
   .wrap {
     background: $my-secondary-3;
     width: 100%;
-    max-width: 1020px;
+    max-width: 1280px;
     margin: auto;
+    .nav-header{
+        background: $my-secondary-5;
+    }
     .my-contain {
       min-height: 95vh;
     }

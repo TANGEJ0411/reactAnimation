@@ -39,16 +39,6 @@ function HomePage() {
         <>
             <h1>我是首頁</h1>
             <h3>請點登入後用line登入</h3>
-            {/* <OtpInput
-                value={otp}
-                onChange={setOtp}
-                numInputs={6}
-                renderSeparator={<span></span>}
-                containerStyle={{ justifyContent: 'center' }}
-                inputStyle={{ margin: '10px', width: '30px', 'input:focus': 'border:1px solid red' }}
-                renderInput={(props) => <input {...props} />}
-            /> */}
-            {/* <MyOtpInput value={otp} valueLength={6} onChange={onChange} /> */}
             <form onSubmit={hadleSubmit}>
                 <OTPInput
                     value={otp}
