@@ -153,7 +153,7 @@ function Modal() {
                             >
                             </div>
                         </div>
-                        {check && <h2>您已成功確認您已成功確認</h2>}
+                        {check && <h2>您已成功確認</h2>}
                     </div>
                 </div >
             )

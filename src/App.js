@@ -106,10 +106,12 @@ function App() {
                   default:
                 }
                 return (
-                  <li className="navfoo-link-box">
-                    <img src={src} alt={title} className="link-icon" />
-                    <Link to={item} key={item} className="d-block link-text">{title}</Link>
-                  </li>
+                  <Link to={item} key={item} className="d-block link-text">
+                    <li className="navfoo-link-box">
+                      <img src={src} alt={title} className="link-icon" />
+                      <p>{title}</p>
+                    </li>
+                  </Link>
                 )
               })}
               {/* <button><Link to={"/login"}>登入</Link></button> */}
