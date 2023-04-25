@@ -3,7 +3,7 @@ import './test.scss';
 import ClipboardCopy from './ClipboardCopy';
 
 
-function BasicExample({ title, content }) {
+function TicketShowList({ title, content }) {
     const [isOpen, setIsOpen] = useState(false)
     const ticListRef = useRef(null)
     const [array, setArray] = useState([
@@ -31,8 +31,8 @@ function BasicExample({ title, content }) {
 
     return (
         <>
-            <div className="accordion">
-                <button className="accordion__button d-flex justify-content-between" onClick={() => {
+            <div className="accordion-parent">
+                <button className="accordion__button-parent d-flex justify-content-between" onClick={() => {
                     setIsOpen(!isOpen)
                 }}>
                     <p>{'票券列表'}</p>
@@ -41,7 +41,7 @@ function BasicExample({ title, content }) {
                 <div
                     className={`accordion__content ${isOpen ? 'accordion__content--open' : ''}`}
                     ref={ticListRef}
-                    style={{ maxHeight: isOpen ? ticListRef.current.scrollHeight + 120 + 'px' : '0' }}
+                    style={{ maxHeight: isOpen ? ticListRef.current.scrollHeight + 140 + 'px' : '0' }}
                 >
                     {array.map((value) => {
                         return (
@@ -76,6 +76,7 @@ function BasicExample({ title, content }) {
                             </div>
                         )
                     })}
+                    <p className='test-notice'>如有需求可點擊此處 <a className='test-notice-span'>查驗票券</a></p>
                 </div>
             </div>
 
@@ -84,4 +85,4 @@ function BasicExample({ title, content }) {
     );
 }
 
-export default BasicExample;
+export default TicketShowList;

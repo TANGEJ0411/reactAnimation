@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { isLoginContext } from "../../App";
 import liff from "@line/liff";
 import { useNavigate } from "react-router-dom";
+import './ClipboardCopy.scss';
 
-function ClipboardCopy({ copyText }) {
+function ClipboardCopy({ copyText, textClass }) {
     const [isCopied, setIsCopied] = useState(false);
     const navigate = useNavigate();
     const isLoggedIn = useContext(isLoginContext)
@@ -56,10 +57,10 @@ function ClipboardCopy({ copyText }) {
     }, [])
     return (
         <div>
-            <input type="text" value={copyText} readOnly />
+            <input type="text" value={copyText} readOnly className={`clipboard-input ${textClass}`} />
             {/* Bind our handler function to the onClick button property */}
             <button onClick={handleCopyClick}>
-                <span>{isCopied ? 'Copied!' : 'Copy'}</span>
+                <span>{isCopied ? 'Cd!' : 'C'}</span>
             </button>
             <p>{isCopied && '已複製'}</p>
         </div>

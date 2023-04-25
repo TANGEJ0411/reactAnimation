@@ -1,0 +1,11 @@
+@import "../../style/globalSytle.scss";
+
+.clipboard-input {
+  width: 140px;
+  border: none;
+  background: $my-secondary-4;
+}
+.test-text {
+  font-size: $my-t35-mb;
+  color: $my-text-6;
+}

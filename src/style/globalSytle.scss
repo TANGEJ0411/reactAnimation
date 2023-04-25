@@ -16,55 +16,167 @@ $my-text-6: #787878;
 $my-text-7: #8c8c8c;
 $my-text-8: #b4b4b4;
 $my-text-9: #c8c8c8;
-$my-h1-mb: 24;
-$my-h1-pc: 36;
-$my-h2-mb: 20;
-$my-h2-pc: 28;
-$my-h3-mb: 16;
-$my-h3-pc: 24;
-$my-h35-mb: 14;
-$my-h35-pc: 20;
-$my-h4-mb: 12;
-$my-h4-pc: 18;
-$my-t1-mb: 24;
-$my-t1-pc: 36;
-$my-t2-mb: 20;
-$my-t2-pc: 28;
-$my-t3-mb: 16;
-$my-t3-pc: 24;
-$my-t35-mb: 14;
-$my-t35-pc: 20;
-$my-t4-mb: 12;
-$my-t4-pc: 18;
+$my-h1-mb: 24px;
+$my-h1-pc: 36px;
+$my-h2-mb: 20px;
+$my-h2-pc: 28px;
+$my-h3-mb: 16px;
+$my-h3-pc: 24px;
+$my-h35-mb: 14px;
+$my-h35-pc: 20px;
+$my-h4-mb: 12px;
+$my-h4-pc: 18px;
+$my-t1-mb: 24px;
+$my-t1-pc: 36px;
+$my-t2-mb: 20px;
+$my-t2-pc: 28px;
+$my-t3-mb: 16px;
+$my-t3-pc: 24px;
+$my-t35-mb: 14px;
+$my-t35-pc: 20px;
+$my-t4-mb: 12px;
+$my-t4-pc: 18px;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
-
+@import "scss-reset/_reset.scss";
 //覆蓋原本BS5變數
 
 //全域模組
-@mixin sm-mobile{
-    @media(min-width:360px){
-      @content;
-    }
+@mixin sm-mobile {
+  @media (min-width: 360px) {
+    @content;
+  }
 }
-@mixin mobile{
-    @media(min-width:508){
-      @content;
-    }
+@mixin mobile {
+  @media (min-width: 508) {
+    @content;
   }
-  @mixin pad{
-    @media(min-width:784){
-      @content;
-    }
+}
+@mixin pad {
+  @media (min-width: 784) {
+    @content;
   }
-  @mixin PC{
-    @media(min-width:1020px){
-      @content;
-    }
+}
+@mixin PC {
+  @media (min-width: 1020px) {
+    @content;
   }
-  
+}
+
+.my-primary-1 {
+  color: #0ac8c8;
+}
+.my-primary-2 {
+  color: #ff7373;
+}
+.my-secondary-1 {
+  color: #e1e1e1;
+}
+.my-secondary-2 {
+  color: #ebebeb;
+}
+.my-secondary-3 {
+  color: #f5f5f5;
+}
+.my-secondary-4 {
+  color: #fafafa;
+}
+.my-secondary-5 {
+  color: #ffffff;
+}
+.my-text-1 {
+  color: #000000;
+}
+.my-text-2 {
+  color: #1e1e1e;
+}
+.my-text-3 {
+  color: #2d2d2d;
+}
+.my-text-4 {
+  color: #4b4b4b;
+}
+.my-text-5 {
+  color: #646464;
+}
+.my-text-6 {
+  color: #787878;
+}
+.my-text-7 {
+  color: #8c8c8c;
+}
+.my-text-8 {
+  color: #b4b4b4;
+}
+.my-text-9 {
+  color: #c8c8c8;
+}
+.my-h1-mb {
+  font-size: 24px;
+}
+.my-h1-pc {
+  font-size: 36px;
+}
+.my-h2-mb {
+  font-size: 20px;
+}
+.my-h2-pc {
+  font-size: 28px;
+}
+.my-h3-mb {
+  font-size: 16px;
+}
+.my-h3-pc {
+  font-size: 24px;
+}
+.my-h35-mb {
+  font-size: 14px;
+}
+.my-h35-pc {
+  font-size: 20px;
+}
+.my-h4-mb {
+  font-size: 12px;
+}
+.my-h4-pc {
+  font-size: 18px;
+}
+.my-t1-mb {
+  font-size: 24px;
+}
+.my-t1-pc {
+  font-size: 36px;
+}
+.my-t2-mb {
+  font-size: 20px;
+}
+.my-t2-pc {
+  font-size: 28px;
+}
+.my-t3-mb {
+  font-size: 16px;
+}
+.my-t3-pc {
+  font-size: 24px;
+}
+.my-t35-mb {
+  font-size: 14px;
+}
+.my-t35-pc {
+  font-size: 20px;
+}
+.my-t4-mb {
+  font-size: 12px;
+}
+.my-t4-pc {
+  font-size: 18px;
+}
+
 body {
+  li {
+    list-style: none;
+  }
   box-sizing: border-box;
   font-family: "Noto Sans TC", sans-serif;
   .wrap {
@@ -72,17 +184,70 @@ body {
     width: 100%;
     max-width: 1280px;
     margin: auto;
-    .nav-header{
-        background: $my-secondary-5;
+    .nav-header {
+      background: $my-secondary-5;
+      width: 100%;
+      z-index: 999;
+      .transfer-btn {
+        position: absolute;
+        color: $my-primary-1;
+        font-size: $my-t3-mb;
+        bottom: 5px;
+        right: 20px;
+      }
+      .voucher,
+      .coupon {
+        color: $my-text-8;
+        font-size: $my-t3-mb;
+        padding: 3px;
+        border-bottom: 2px solid transparent;
+      }
+      .voucher:hover,
+      .coupon:hover {
+        color: $my-primary-1;
+        border-bottom: 2px solid $my-primary-1;
+      }
+    }
+    .state-box {
+      margin-left: 20px;
+      margin-top: 10px;
+      .state-avaliable {
+        background: $my-secondary-2;
+        color: $my-text-1;
+        padding: 5px;
+        border-radius: 10px;
+      }
+      .state-unavaliable {
+        // background: $my-secondary-2;
+        color: $my-text-8;
+        padding: 5px;
+        border-radius: 10px;
+      }
+    }
+    .filter-btn {
+      margin-right: 20px;
+      margin-top: 10px;
+      .filter-text {
+        margin-left: 3px;
+      }
     }
     .my-contain {
       min-height: 95vh;
     }
     .home-nav {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: auto;
       overflow-wrap: anywhere;
       background: $my-secondary-5;
+      .navfoo-link-box {
+        .link-icon {
+          width: 28px;
+          height: 28px;
+        }
+        .link-text {
+          text-decoration: none;
+        }
+      }
     }
   }
 }

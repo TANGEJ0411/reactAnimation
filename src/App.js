@@ -11,11 +11,17 @@ import Ticket from "./pages/components/Ticket";
 import AddFriend from "./pages/components/AddFriend";
 import './style/globalSytle.scss'
 import HomePage from "./pages/components/HomePage";
+import filterIcon from './image/filter-icon.svg'
+import member from './image/member.svg'
+import trip from './image/trip.svg'
+import tic from './image/tic.svg'
+import shop from './image/shop.svg'
+import message from './image/message.svg'
 
 export const isLoginContext = React.createContext()
 
 function App() {
-  const navItem = ['/', 'basicExample', 'ticket', 'modal', 'clipboardCopy']
+  const navItem = ['/', 'basicExample', 'ticket', 'modal', 'login']
   const [isLoggin, setIsLoggin] = useState(false)
   useEffect(() => {
     async function liffInit() {
@@ -36,16 +42,26 @@ function App() {
       <BrowserRouter>
         <isLoginContext.Provider value={isLoggin}>
           <div className="wrap">
-            <nav className="nav-header">
-              <div className="row">
-                <h2 className="col-10 text-center">我的票夾</h2>
-                <h6 className="col-2">轉贈票券</h6>
+            <nav className="nav-header position-sticky top-0">
+              <div className="position-relative p-2">
+                <div className="text-center my-h2-mb">我的票夾</div>
+                <h6 className="transfer-btn">轉贈票券</h6>
               </div>
-              <div className="d-flex mt-3">
-                <h5 className="mx-auto">預約券</h5>
-                <h5 className="mx-auto">即享券</h5>
+              <div className="d-flex mt-1">
+                <h5 className="flex-fill text-center voucher">預約券</h5>
+                <h5 className="flex-fill text-center coupon">即享券</h5>
               </div>
             </nav>
+            <div className="d-flex justify-content-between">
+              <div className="state-box">
+                <button className="state-avaliable">可使用</button>
+                <button className="state-unavaliable">已使用/失效/轉贈</button>
+              </div>
+              <div className="d-flex filter-btn">
+                <img src={filterIcon} alt="篩選圖案" className="align-self-center" />
+                <p className="filter-text align-self-center">篩選</p>
+              </div>
+            </div>
             <div className="my-contain">
               <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -62,32 +78,41 @@ function App() {
               </Routes>
               <p className="text-center">已經到底囉^_^</p>
             </div>
-            <nav className="home-nav d-flex justify-content-center position-sticky bottom-0">
+            <nav className="home-nav d-flex justify-content-around position-sticky bottom-0">
               {navItem.map((item, index) => {
                 let title
+                let src;
                 switch (item) {
                   case "/":
-                    title = '首頁'
+                    title = '票券'
+                    src = tic;
                     break;
                   case 'basicExample':
-                    title = 'basicExample'
+                    title = '行程'
+                    src = trip
                     break;
                   case 'ticket':
-                    title = 'ticket'
+                    title = '商店'
+                    src = shop
                     break;
                   case 'modal':
-                    title = 'modal'
+                    title = '通知'
+                    src = message
                     break
-                  case 'clipboardCopy':
-                    title = 'clipboardCopy'
+                  case 'login':
+                    title = '會員'
+                    src = member
                     break
                   default:
                 }
                 return (
-                  <Link to={item} key={item} className="ms-2">{title}</Link>
+                  <li className="navfoo-link-box">
+                    <img src={src} alt={title} className="link-icon" />
+                    <Link to={item} key={item} className="d-block link-text">{title}</Link>
+                  </li>
                 )
               })}
-              <button><Link to={"/login"}>登入</Link></button>
+              {/* <button><Link to={"/login"}>登入</Link></button> */}
             </nav>
           </div >
         </isLoginContext.Provider>

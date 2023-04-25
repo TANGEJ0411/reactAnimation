@@ -1,14 +1,30 @@
-@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../style/globalSytle.scss";
 
+.accordion-parent {
+  width: 288px;
+  margin: 10px auto;
+  border-radius: 4px;
+  background-color: $my-secondary-5;
+}
 .accordion {
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
 }
 
+.accordion__button-parent {
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+  cursor: pointer;
+}
 .accordion__button {
   display: block;
   width: 100%;
   padding: 1rem;
-  background-color: #eee;
+  background-color: $my-secondary-5;
   border: none;
   text-align: left;
   font-weight: bold;
@@ -22,8 +38,37 @@
 }
 
 .accordion__content--open {
-  max-height: 1000px;
+  max-height: 2000px;
 }
 .test {
-  height: 100px;
+  background: $my-secondary-5;
+  height: 120px;
+  padding: 0 20px;
+  .test-box {
+    padding: 10px;
+    background: $my-secondary-4;
+    border: 1px solid $my-text-9;
+    height: 120px;
+    color: $my-text-6;
+    border-bottom: 1px solid $my-text-9;
+    .test-btn-box {
+      border-top: 1px solid $my-text-9;
+      .test-btn {
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+        color: $my-text-6;
+      }
+    }
+    .test-text {
+      font-size: $my-t35-mb;
+    }
+  }
+}
+.test-notice {
+  color: $my-text-6;
+  font-size: $my-t4-mb;
+  .test-notice-span {
+    color: $my-primary-1;
+  }
 }
