@@ -5,6 +5,7 @@ import { isLoginContext } from '../../App'
 import MyOtpInput from './MyOtpInput';
 import OTPInput from 'react-otp-input';
 import './OtpInput.css';
+import DropdownMenu from './DropdownMenu';
 
 
 function HomePage() {
@@ -35,6 +36,13 @@ function HomePage() {
         e.preventDefault()
         console.log(otp, '123')
     }
+
+    const options = ['Option 1', 'Option 2', 'Option 3'];
+    const [selectedOption, setSelectedOption] = useState('');
+
+    const handleSelect = (option) => {
+        setSelectedOption(option);
+    };
     return (
         <>
             <h1>我是首頁</h1>
@@ -57,6 +65,9 @@ function HomePage() {
                 />
                 <input type="submit" value="Submit" />
             </form>
+
+            <DropdownMenu options={options} onSelect={handleSelect} />
+            <p>You selected: {selectedOption}</p>
         </>
     )
 }
