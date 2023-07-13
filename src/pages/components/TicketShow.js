@@ -10,17 +10,20 @@ function TicketShow() {
     const [logReq, setLogReq] = useState(false)
     const navigate = useNavigate()
     const isLoggin = useContext(isLoginContext)
-    useEffect(() => {
-        async function liffLogin() {
-            try {
-                await liff.ready
-                liff.login()
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        if (logReq) { liffLogin() }
-    }, [logReq])
+    // useEffect(() => {
+    //     async function liffLogin() {
+    //         try {
+    //             await liff.ready;
+    //             if (liff.permission.query("email") === "prompt") {
+    //                 liff.login({ scope: "email" });
+    //             }
+    //             liff.login();
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     if (logReq) { liffLogin() }
+    // }, [logReq])
 
     return (
         <>

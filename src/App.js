@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect, useReducer, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { BrowserRouter, Link } from "react-router-dom";
 import liff from '@line/liff';
-
 import TicketShow from "./pages/components/TicketShow";
 import BasicExample from "./pages/components/BasicExample";
 import Modal from "./pages/components/Modal.js";
@@ -17,26 +16,50 @@ import trip from './image/trip.svg'
 import tic from './image/tic.svg'
 import shop from './image/shop.svg'
 import message from './image/message.svg'
+import Permission from "./pages/components/Permission";
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 
 export const isLoginContext = React.createContext()
 
+const reducer = (state, action) => {
+  console.log(state, action)
+}
+
 function App() {
+  //init apollo client
+  const client = new ApolloClient({
+    uri: 'https://flyby-router-demo.herokuapp.com/',
+    cache: new InMemoryCache()
+  })
+  client
+    .query({
+      query: gql`
+      query GetLocations {
+        locations {
+          id
+          name
+          description
+          photo
+        }
+      }
+    `,
+    })
+    .then((result) => console.log(result));
+
+  //todos 是 useReducer裡的state
+  //dispatch 是用來觸發reducer的
+  //useReducer需要傳入兩個參數，第一是reducer的函式，第二是inital初始值
+  const [todos, dispatch] = useReducer(reducer, [])
   const navItem = ['/', 'basicExample', 'ticket', 'modal', 'login']
   const [isLoggin, setIsLoggin] = useState(false)
-  useEffect(() => {
-    async function liffInit() {
-      try {
-        await liff.init({
-          liffId: "1660858533-loqWyNQE", // Use own liffId
-        })
-        console.log('init success')
-        setIsLoggin(liff.isLoggedIn())
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    liffInit()
-  }, [])
+  const [token, setToken] = useState("")
+
+
+  // useEffect(() => {
+  //   async function sendToken() {
+  //     const response = await axios.post('',)
+  //   }
+  // }, [token])
   return (
     <>
       <BrowserRouter>
@@ -75,6 +98,7 @@ function App() {
                 <Route path="/modal" element={<Modal />} />
                 <Route path="/clipboardCopy" element={<ClipboardCopy copyText={'text'} />} />
                 <Route path="/addFriend" element={<AddFriend />} />
+                <Route path="permission" element={<Permission />} />
               </Routes>
               <p className="text-center">已經到底囉^_^</p>
             </div>
@@ -116,7 +140,7 @@ function App() {
               })}
               {/* <button><Link to={"/login"}>登入</Link></button> */}
             </nav>
-          </div >
+          </div>
         </isLoginContext.Provider>
       </BrowserRouter>
     </>
